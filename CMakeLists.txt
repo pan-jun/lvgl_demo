@@ -37,8 +37,19 @@ enable_language(CXX C ASM)
 # Create an executable object type
 add_executable(${CMAKE_PROJECT_NAME})
 
+set(LV_BUILD_CONF_PATH "User/third_party/LVGL/lv_conf.h")
+set(CONFIG_LV_BUILD_DEMOS OFF)
+set(CONFIG_LV_BUILD_EXAMPLES OFF)
+set(CONFIG_LV_USE_THORVG_INTERNAL OFF)
+
 # Add STM32CubeMX generated sources
 add_subdirectory(cmake/stm32cubemx)
+add_subdirectory(User/third_party/LVGL/lvgl)
+add_subdirectory(User/third_party/LVGL/ui_demo)
+
+target_link_libraries(lib-ui PUBLIC 
+    lvgl::lvgl
+)
 
 # Link directories setup
 target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
@@ -89,4 +100,6 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
     stm32cubemx
 
     # Add user defined libraries
+    lvgl::lvgl
+    lib-ui
 )
