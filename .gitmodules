@@ -1,0 +1,6 @@
+[submodule "User/third_party/LVGL/lvgl"]
+	path = User/third_party/LVGL/lvgl
+	url = git@github.com:lvgl/lvgl.git
+[submodule "User/third_party/LVGL/ui_demo"]
+	path = User/third_party/LVGL/ui_demo
+	url = git@github.com:pan-jun/ui_demo.git
